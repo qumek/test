@@ -1,7 +1,3 @@
-// const firstName = 'goga'
-// firstName = 'vova'
-// console.log('salam', firstName)
-
 // let firstName = 'Тимур'
 // firstName = 'Тима'
 
@@ -13,15 +9,6 @@
 // console.log('Возраст:', age)
 // console.log('Город:', city)
 // console.log('Хобби:', hobby)
-
-// Number
-// BigInt
-// String
-// Boolean
-// undefined
-// null
-// Symbol
-// Object
 
 let titleProject = "Оценка стоимости";
 let screensValue = "шаблонные, с уникальным дизайном, с анимациями";
