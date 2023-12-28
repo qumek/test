@@ -2,7 +2,14 @@
 // firstName = 'vova'
 // console.log('salam', firstName)
 
-let firstName = 'Boba'
-firstName = 'Nuka'
+let firstName = 'Тимур'
+firstName = 'Тима'
 
-console.log('salam4ik', firstName)
+let age = '32'
+let city = 'Астана'
+let hobby = 'Прокрастинация'
+
+console.log('Имя:', firstName)
+console.log('Возраст:', age)
+console.log('Город:', city)
+console.log('Хобби:', hobby)
