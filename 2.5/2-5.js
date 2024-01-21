@@ -28,10 +28,11 @@ const fullPrice = getFullPrice()
 // Создай функцию getTitle.
 // Функция изменяет название проекта(titleProject), переводит первый символ в верхний регистр(делает заглавной), а остальные в нижний регистр(делает маленькими) и возвращает отредактированное название проекта (titleProject). 
 function getTitle() {
-    return titleProject.charAt(0).toUpperCase() + titleProject.slice(1).toLowerCase();
+    return titleProject.trim().charAt(0).toUpperCase() + titleProject.slice(1).toLowerCase();
 }
-titleProject = getTitle()
-console.log('Название проекта: ' + titleProject)
+
+titleProject = getTitle();
+console.log('Название проекта: ' + titleProject);
 
 
 // step 4
@@ -39,11 +40,11 @@ console.log('Название проекта: ' + titleProject)
 // Функция возвращает итоговую стоимость за вычетом процента подрядчику.
 // Результат функции запиши в переменную servicePercentPrice
 function functionPercentPrice() {
-    if (fullPrice > 50000) {
+    if (fullPrice >= 50000) {
         percentPrice = 10;
-    } else if (fullPrice > 20000 && fullPrice < 40000) {
+    } else if (fullPrice >= 20000 && fullPrice <= 50000) {
         percentPrice = 5;
-    } else if (fullPrice > 0 && fullPrice < 20000) {
+    } else if (fullPrice > 0 && fullPrice <= 20000) {
         percentPrice = 0;
     } else {
         console.log("Что-то пошло не так");
@@ -77,7 +78,7 @@ function getRollbackMessage() {
     console.log(formatMessage('стоимость всего проекта: ' + fullPrice));
     console.log(formatMessage('стоимость всех дополнительных услуг: ' + allServicePrices));
     console.log(formatMessage('скидка клиента: ' + percentPrice + '%'));
-    console.log(formatMessage('стоимость проекта с учётом скидки: ' + servicePercentPrice));
+    console.log(formatMessage('стоимость проекта с учётом скидки: ' + Math.ceil(servicePercentPrice)));
 }
 
 getRollbackMessage();
