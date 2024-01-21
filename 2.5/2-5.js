@@ -1,45 +1,83 @@
-// step 1 & 2
-let titleProject = prompt("Название проекта?");
-console.log(titleProject);
+let servicePrice1 = +prompt("Введите стоимость первой услуги:") || 20000;
+let servicePrice2 = +prompt("Введите стоимость второй услуги:") || 30000;
+let screenPrice = +prompt("Введите стоимость верстки:") || 50000;
+let titleProject = prompt("Введите название проекта:") || "web development";
 
-let screensValue = prompt("Типы экранов (разделите через запятую)?");
-console.log(screensValue);
+
+// step 1
+// Создай / Объяви функцию getAllServicePrices с помощью метода "function expression".
+// Функция должна возвращать стоимость всех дополнительных услуг.
+// Результат функции запиши в переменную allServicePrices
+const getAllServicePrices = function () {
+    return servicePrice1 + servicePrice2
+}
+const allServicePrices = getAllServicePrices()
+
+
+// step 2
+// Создай функцию getFullPrice с помощью метода "function declaration".
+// Функция должна возвращать стоимость всех дополнительных услуг(allServicePrices) и стоимость вёрстки(screenPrice )
+// Результат функции запиши в переменную fullPrice.
+function getFullPrice() {
+    return allServicePrices + screenPrice
+}
+const fullPrice = getFullPrice()
+
 
 // step 3
-let responsive = prompt("Нужен ли респонсивный сайт?");
-console.log(responsive);
+// Создай функцию getTitle.
+// Функция изменяет название проекта(titleProject), переводит первый символ в верхний регистр(делает заглавной), а остальные в нижний регистр(делает маленькими) и возвращает отредактированное название проекта (titleProject). 
+function getTitle() {
+    return titleProject.charAt(0).toUpperCase() + titleProject.slice(1).toLowerCase();
+}
+titleProject = getTitle()
+console.log('Название проекта: ' + titleProject)
+
 
 // step 4
-let service1 = prompt("Какой сервис нужен?");
-console.log(service1);
-
-let servicePrice1 = +prompt("Сколько это будет стоить?");
-console.log(servicePrice1);
-
-let service2 = prompt("Какой еще сервис тебе нужен?");
-console.log(service2);
-let servicePrice2 = prompt("Сколько будет стоить этот второй сервис?");
-console.log(servicePrice2);
-
-// step 5
-let screenPrice = 3200;
-let fullPrice = screenPrice + servicePrice1 + servicePrice2;
-
-// step 6
-let contractorPercentage = 0.1; // 10% отката подрядчику
-let servicePercentPrice = fullPrice * (1 - contractorPercentage);
-
-// step 7
-if (fullPrice > 50000) {
-    console.log("Сделаем скидку в 10%");
-} else if (fullPrice > 20000 && fullPrice < 40000) {
-    console.log("Сделаем скидку 5%");
-} else if (fullPrice > 0 && fullPrice < 20000) {
-    console.log("Скидка не предусмотрена");
-} else {
-    console.log("Что-то пошло не так");
+// Создай функцию getServicePercentPrices.
+// Функция возвращает итоговую стоимость за вычетом процента подрядчику.
+// Результат функции запиши в переменную servicePercentPrice
+function functionPercentPrice() {
+    if (fullPrice > 50000) {
+        percentPrice = 10;
+    } else if (fullPrice > 20000 && fullPrice < 40000) {
+        percentPrice = 5;
+    } else if (fullPrice > 0 && fullPrice < 20000) {
+        percentPrice = 0;
+    } else {
+        console.log("Что-то пошло не так");
+    }
+    return percentPrice
 }
 
-// итог
-console.log("Общая стоимость проекта:", fullPrice);
-console.log(Math.ceil(servicePercentPrice), 'Итоговая сумма проекта за вычетов процента подрядчику');
+percentPrice = functionPercentPrice()
+
+function getServicePercentPrices() {
+    return fullPrice - (fullPrice / 100 * percentPrice)
+}
+const servicePercentPrice = getServicePercentPrices()
+
+
+//step 5
+// Создай функцию getRollbackMessage.
+// Функция считает и выводит в консоль значение скидки для клиента в зависимости от стоимости проекта.
+// Программа должна:
+// - считать стоимость всего проекта
+// - считать стоимость всех услуг
+// - считать стоимость проекта с учётом скидки подрядчику
+// - считать скидку клиента, в зависимости от стоимости проекта и выводить сообщение в консоль
+// Дополнительно:
+// - менять регистр символов в названии проекта (Первый символ заглавный, остальные строчные)
+function formatMessage(message) {
+    return message.charAt(0).toUpperCase() + message.slice(1).toLowerCase();
+}
+
+function getRollbackMessage() {
+    console.log(formatMessage('стоимость всего проекта: ' + fullPrice));
+    console.log(formatMessage('стоимость всех дополнительных услуг: ' + allServicePrices));
+    console.log(formatMessage('скидка клиента: ' + percentPrice + '%'));
+    console.log(formatMessage('стоимость проекта с учётом скидки: ' + servicePercentPrice));
+}
+
+getRollbackMessage();
